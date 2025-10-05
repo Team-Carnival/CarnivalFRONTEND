@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation(); // to detect current path
+  const location = useLocation();
 
   const links = [
     { name: "Home", to: "/" },
@@ -16,12 +16,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-3 w-full bg-transparent text-white z-50">
+    <nav className="fixed top-8 w-full bg-transparent text-white z-50">
       <div className="max-w-7xl mx-auto">
         <div className="relative bg-transparent border border-white border-opacity-30 rounded-2xl backdrop-blur-md shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/30 transition-all duration-500 hover:border-opacity-50 mx-4">
-          <div className="flex justify-between items-center py-3 px-8">
+          <div className="flex justify-between items-center py-6 px-8">
             {/* Logo */}
-            <h1 className="text-2xl font-bold text-white font-[Orbitron] bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold font-[Orbitron] bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
               Team Carnival
             </h1>
 
@@ -33,13 +33,13 @@ const Navbar = () => {
                     to={link.to}
                     className={`relative transition-all duration-300 font-medium px-3 py-2 rounded-lg ${
                       location.pathname === link.to
-                        ? "text-white bg-white bg-opacity-10"
-                        : "text-gray-200 hover:text-white hover:bg-white hover:bg-opacity-5"
+                        ? "text-blue-400 bg-blue-500/10 border border-blue-400/30"
+                        : "text-gray-300 hover:text-blue-400 hover:bg-blue-500/10"
                     }`}
                   >
                     {link.name}
                     {location.pathname === link.to && (
-                      <span className="absolute inset-0 border border-white border-opacity-40 rounded-lg animate-pulse"></span>
+                      <span className="absolute inset-0 border border-blue-400 border-opacity-40 rounded-lg animate-pulse"></span>
                     )}
                   </Link>
                 </li>
@@ -48,9 +48,9 @@ const Navbar = () => {
 
             {/* Mobile Hamburger */}
             <div className="md:hidden">
-              <button 
+              <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-cyan-300 transition-colors border border-white border-opacity-30 rounded-lg p-2 hover:border-opacity-60"
+                className="text-white hover:text-blue-400 transition-colors border border-white border-opacity-30 rounded-lg p-2 hover:border-blue-400 hover:border-opacity-60"
               >
                 {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
               </button>
@@ -68,8 +68,8 @@ const Navbar = () => {
                       onClick={() => setIsOpen(false)}
                       className={`text-lg transition-all duration-300 font-medium px-6 py-3 rounded-xl ${
                         location.pathname === link.to
-                          ? "text-white bg-white bg-opacity-10 border border-white border-opacity-40"
-                          : "text-gray-200 hover:text-white hover:bg-white hover:bg-opacity-5"
+                          ? "text-blue-400 bg-blue-500/10 border border-blue-400/40"
+                          : "text-gray-300 hover:text-blue-400 hover:bg-blue-500/10"
                       }`}
                     >
                       {link.name}

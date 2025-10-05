@@ -44,7 +44,7 @@ const HeroSection = () => {
           transition={{ duration: 1.5 }}
         >
           Predict Your Perfect Day, <br />
-          <span className="text-blue-400 glow-text">Powered by Space</span>
+          <span className="text-blue-350 glow-text">Powered by Space</span>
         </motion.h1>
 
         <motion.p
@@ -57,7 +57,7 @@ const HeroSection = () => {
         </motion.p>
 
         <motion.a
-          href="#predictor"
+          href="predictor"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transition duration-300"

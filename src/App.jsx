@@ -8,9 +8,20 @@ import AboutUs from "./components/AboutUs/AboutUs.jsx";
 import DataSources from "./components/DataSources.jsx";
 import Contact from "./components/ContactUs/Contact.jsx";
 
+// ScrollToTop component
+const ScrollToTop = () => {
+  React.useEffect(() => {
+    const unlisten = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    return unlisten;
+  }, []);
+
+  return null;
+};
+
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* Ensures every route starts from top */}
       <Layout>
         <Routes>
           <Route path="/" element={<HeroSection />} />

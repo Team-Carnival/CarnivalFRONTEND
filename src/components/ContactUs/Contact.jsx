@@ -12,8 +12,22 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // For prototype, just show thank you message
+
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    const mailtoLink = `mailto:asishmehata48@gmail.com?subject=Contact from ${encodeURIComponent(
+      formData.name
+    )}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+
+    // Open the default mail client
+    window.location.href = mailtoLink;
+
+    // Show thank you message
     setSubmitted(true);
+
+    // Reset form
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -23,6 +37,7 @@ const Contact = () => {
       className="min-h-screen bg-gradient-to-b from-[#031224] to-[#05132a] text-white py-20 px-6"
     >
       <div className="max-w-4xl mx-auto text-center">
+        {/* Heading */}
         <motion.h2
           className="text-4xl md:text-5xl font-extrabold font-[Orbitron] text-sky-300 mb-6"
           initial={{ opacity: 0, y: -20 }}
@@ -42,21 +57,21 @@ const Contact = () => {
 
         {/* Social Links */}
         <motion.div
-          className="flex justify-center gap-6 mb-12"
+          className="flex justify-center gap-6 mb-12 text-2xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <a href="#" aria-label="GitHub" className="hover:text-sky-400 text-2xl">
+          <a href="#" aria-label="GitHub" className="hover:text-sky-400">
             <FaGithub />
           </a>
-          <a href="#" aria-label="LinkedIn" className="hover:text-sky-400 text-2xl">
+          <a href="#" aria-label="LinkedIn" className="hover:text-sky-400">
             <FaLinkedin />
           </a>
-          <a href="mailto:teamzenith@spaceweather.app" aria-label="Email" className="hover:text-sky-400 text-2xl">
+          <a href="mailto:teamzenith@spaceweather.app" aria-label="Email" className="hover:text-sky-400">
             <FaEnvelope />
           </a>
-          <a href="#" aria-label="Twitter" className="hover:text-sky-400 text-2xl">
+          <a href="#" aria-label="Twitter" className="hover:text-sky-400">
             <FaTwitter />
           </a>
         </motion.div>

@@ -16,59 +16,71 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-black bg-opacity-90 text-white z-50 shadow-lg">
-      <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-        {/* Logo */}
-        <h1 className="text-2xl font-bold text-sky-400 font-[Orbitron]">
-          Space Weather Insight
-        </h1>
+    <nav className="fixed top-3 w-full bg-transparent text-white z-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="relative bg-transparent border border-white border-opacity-30 rounded-2xl backdrop-blur-md shadow-2xl shadow-blue-500/20 hover:shadow-blue-400/30 transition-all duration-500 hover:border-opacity-50 mx-4">
+          <div className="flex justify-between items-center py-3 px-8">
+            {/* Logo */}
+            <h1 className="text-2xl font-bold text-white font-[Orbitron] bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              Team Carnival
+            </h1>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex space-x-6">
-          {links.map((link) => (
-            <li key={link.name}>
-              <Link
-                to={link.to}
-                className={`transition-colors duration-300 ${
-                  location.pathname === link.to
-                    ? "text-blue-400"
-                    : "hover:text-sky-400"
-                }`}
+            {/* Desktop Links */}
+            <ul className="hidden md:flex space-x-10">
+              {links.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.to}
+                    className={`relative transition-all duration-300 font-medium px-3 py-2 rounded-lg ${
+                      location.pathname === link.to
+                        ? "text-white bg-white bg-opacity-10"
+                        : "text-gray-200 hover:text-white hover:bg-white hover:bg-opacity-5"
+                    }`}
+                  >
+                    {link.name}
+                    {location.pathname === link.to && (
+                      <span className="absolute inset-0 border border-white border-opacity-40 rounded-lg animate-pulse"></span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Mobile Hamburger */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-white hover:text-cyan-300 transition-colors border border-white border-opacity-30 rounded-lg p-2 hover:border-opacity-60"
               >
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+                {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+              </button>
+            </div>
+          </div>
 
-        {/* Mobile Hamburger */}
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
+          {/* Mobile Menu */}
+          {isOpen && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-black bg-opacity-80 backdrop-blur-lg border border-white border-opacity-30 rounded-2xl shadow-2xl">
+              <ul className="flex flex-col items-center py-6 space-y-4">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.to}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-lg transition-all duration-300 font-medium px-6 py-3 rounded-xl ${
+                        location.pathname === link.to
+                          ? "text-white bg-white bg-opacity-10 border border-white border-opacity-40"
+                          : "text-gray-200 hover:text-white hover:bg-white hover:bg-opacity-5"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <ul className="md:hidden flex flex-col items-center bg-black bg-opacity-95 py-6 space-y-4">
-          {links.map((link) => (
-            <li key={link.name}>
-              <Link
-                to={link.to}
-                onClick={() => setIsOpen(false)}
-                className={`text-lg transition-colors duration-300 ${
-                  location.pathname === link.to
-                    ? "text-blue-400"
-                    : "hover:text-sky-400"
-                }`}
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
     </nav>
   );
 };

@@ -32,10 +32,10 @@ const Footer = () => {
         </ul>
 
         <p className="text-sm text-gray-400">
-          © 2025 Space Weather Insight | NASA Space Apps Challenge 2025
+          © 2025 Team Carnival | NASA Space Apps Challenge 2025
         </p>
         <p className="text-sm text-gray-400">
-          All rights reserved | Developed by <span className="text-sky-400 font-semibold">Team Zenith</span>
+          All rights reserved | Developed by <span className="text-sky-400 font-semibold">Team Carnival</span>
         </p>
       </div>
     </footer>

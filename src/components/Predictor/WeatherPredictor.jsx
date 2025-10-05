@@ -8,25 +8,24 @@ const WeatherLikelihood = () => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
 
-  const API_KEY = "";
+  const BASE_URL = "https://nasa-weather-backend.onrender.com/"; 
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError("");
-  setResult(null);
+    e.preventDefault();
+    setError("");
+    setResult(null);
 
-  try {
-    const res = await axios.get("http://localhost:5000/api/weather", {
-      params: { location, date, time },
-    });
+    try {
+      const res = await axios.get(`${BASE_URL}/api/weather`, {
+        params: { location, date, time },
+      });
 
-    setResult(res.data);
-  } catch (err) {
-    setError(err.response?.data?.error || "Failed to fetch weather data.");
-    console.error(err);
-  }
-};
-
+      setResult(res.data);
+    } catch (err) {
+      setError(err.response?.data?.error || "Failed to fetch weather data.");
+      console.error(err);
+    }
+  };
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-[#020a1f] to-[#05132a] text-white py-20 px-6">
@@ -35,7 +34,8 @@ const WeatherLikelihood = () => {
           Weather Likelihood Predictor
         </h2>
         <p className="text-gray-300 mb-8">
-          Enter your location, date, and time to get a customized likelihood of extreme weather conditions.
+          Enter your location, date, and time to get a customized likelihood of
+          extreme weather conditions.
         </p>
 
         {/* Form */}
@@ -83,9 +83,16 @@ const WeatherLikelihood = () => {
               Forecast for {location} on {date} at {time}
             </h3>
             <div className="flex flex-col gap-2 text-lg">
-              <p>🌡 Temperature: <span className="font-bold">{result.temp}°C</span></p>
-              <p>🌧 Rain: <span className="font-bold">{result.rain} mm</span></p>
-              <p>💨 Wind: <span className="font-bold">{result.wind} m/s</span></p>
+              <p>
+                🌡 Temperature:{" "}
+                <span className="font-bold">{result.temp}°C</span>
+              </p>
+              <p>
+                🌧 Rain: <span className="font-bold">{result.rain} mm</span>
+              </p>
+              <p>
+                💨 Wind: <span className="font-bold">{result.wind} m/s</span>
+              </p>
               <p className="mt-3 font-semibold text-sky-300">
                 Likely Conditions: {result.conditions.join(", ")}
               </p>

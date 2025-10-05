@@ -5,6 +5,7 @@ import Layout from "./components/Layout.jsx";
 import HeroSection from "./components/HeroSection.jsx";
 import WeatherPredictor from "./components/Predictor/WeatherPredictor.jsx";
 import AboutUs from "./components/AboutUs/AboutUs.jsx";
+import Blog from "./components/BlogPage.jsx"
 import DataSources from "./components/DataSources.jsx";
 import Contact from "./components/ContactUs/Contact.jsx";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<HeroSection />} />
           <Route path="/predictor" element={<WeatherPredictor />} />
           <Route path="/datasources" element={<DataSources />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

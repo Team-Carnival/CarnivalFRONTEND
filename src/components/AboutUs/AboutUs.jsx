@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaBullseye, FaExclamationTriangle, FaFlag } from "react-icons/fa";
 import Asish from "../../assets/asish.jpg";
-import BJ from "../../assets/bijay.jpg";
+import BJ from "../../assets/bijay.jpeg";
 
 const members = [
   {
@@ -68,7 +68,7 @@ const AboutUs = () => {
                 <img
                   src={m.img || "/images/default.jpg"}
                   alt={`${m.name} photo`}
-                  className="w-24 h-24 rounded-xl object-cover border border-white/10 mb-4"
+                  className="w-80 h-60 rounded-xl object-cover border border-white/10 mb-4"
                 />
                 <h4 className="text-xl font-semibold text-white mb-1">{m.name}</h4>
                 <p className="text-sky-300 font-medium text-sm mb-3">{m.role}</p>

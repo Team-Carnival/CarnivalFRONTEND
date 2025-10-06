@@ -227,7 +227,12 @@ const WeatherLikelihood = () => {
 
             {result.suggestedTime && (
               <p className="mt-2 text-gray-300 text-center">
-                ✅ Next comfortable time: {result.suggestedTime}
+                ✅ Next comfortable time:{" "}
+                {new Date(result.suggestedTime).toLocaleString("en-US", {
+                  hour: "numeric",
+                  minute: "2-digit",
+                  hour12: true,
+                })}
               </p>
             )}
           </motion.div>

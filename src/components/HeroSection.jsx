@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import { Link } from "react-router-dom";
+
 
 const HeroSection = () => {
   const particlesInit = async (engine) => {
@@ -56,14 +58,15 @@ const HeroSection = () => {
           Explore NASA’s Earth observation data to forecast “very hot”, “very cold”, “very wet”, and “very windy” days — anywhere on Earth.
         </motion.p>
 
-        <motion.a
-          href="predictor"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transition duration-300"
-        >
-          Get Started
-        </motion.a>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <Link
+            to="/predictor"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transition duration-300"
+          >
+            Get Started
+          </Link>
+        </motion.div>
+
       </div>
 
       {/* Optional Earth Glow Effect */}
